@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
   Image,
@@ -20,6 +21,8 @@ import {
 } from './styles';
 
 const SignIn: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <KeyboardAvoidingView
@@ -38,7 +41,6 @@ const SignIn: React.FC = () => {
             </View>
             <Input name="email" icon="mail" placeholder="E-mail" />
             <Input name="password" icon="lock" placeholder="Senha" />
-
             <Button
               onPress={() => {
                 console.log('teste');
@@ -46,26 +48,15 @@ const SignIn: React.FC = () => {
             >
               Entrar
             </Button>
-
-            <ForgotPassword
-              onPress={() => {
-                console.log('teste');
-              }}
-            >
+            <ForgotPassword onPress={() => console.log('deu')}>
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
             </ForgotPassword>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-
-      <CreateAccountButton
-        onPress={() => {
-          console.log('teste');
-        }}
-      >
-        <CreateAccountButtonText>
-          <Icon name="log-in" size={20} color="#ff9000" /> Criar uma conta
-        </CreateAccountButtonText>
+      <CreateAccountButton onPress={() => navigation.navigate('SignUp')}>
+        <Icon name="log-in" size={20} color="#FF9000" />
+        <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
       </CreateAccountButton>
     </>
   );
